@@ -1,6 +1,6 @@
 function loadTable() {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://localhost:3000/users");
+  xhttp.open("GET", "http://localhost:3000/user/all");
   xhttp.send();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -51,7 +51,7 @@ function userCreate() {
   const avatar = document.getElementById("avatar").value;
     
   const xhttp = new XMLHttpRequest();
-  xhttp.open("POST", "http://localhost:3000/users/create");
+  xhttp.open("POST", "http://localhost:3000/user/create");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({ 
     "id": id, "fname": fname, "lname": lname, "username": username, "email": email, 
@@ -68,7 +68,7 @@ function userCreate() {
 
 function userDelete(id) {
   const xhttp = new XMLHttpRequest();
-  xhttp.open("DELETE", "http://localhost:3000/users/delete");
+  xhttp.open("DELETE", "http://localhost:3000/user/delete");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({ 
     "id": id
@@ -85,7 +85,7 @@ function userDelete(id) {
 function showUserEditBox(id) {
   console.log(id);
   const xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "http://localhost:3000/users/"+id);
+  xhttp.open("GET", "http://localhost:3000/user/"+id);
   xhttp.send();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -119,7 +119,7 @@ function userEdit() {
   const avatar = document.getElementById("avatar").value;
     
   const xhttp = new XMLHttpRequest();
-  xhttp.open("PUT", "http://localhost:3000/users/update");
+  xhttp.open("PUT", "http://localhost:3000/user/update");
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send(JSON.stringify({ 
     "id": id, "fname": fname, "lname": lname, "username": username, "email": email, 
